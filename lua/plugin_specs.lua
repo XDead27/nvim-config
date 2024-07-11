@@ -65,14 +65,8 @@ local plugin_specs = {
 
   {
     "nvim-treesitter/nvim-treesitter",
-    enabled = function()
-      if vim.g.is_mac then
-        return true
-      end
-      return false
-    end,
-    event = "VeryLazy",
     build = ":TSUpdate",
+    event = "VeryLazy",
     config = function()
       require("config.treesitter")
     end,
@@ -86,7 +80,12 @@ local plugin_specs = {
   'tpope/vim-sleuth',
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  {
+    'folke/which-key.nvim',
+    config = function ()
+      require("config.which-key")
+    end
+  },
 
   -- Show git change (change, delete, add) signs in vim sign column
   {
@@ -209,6 +208,16 @@ local plugin_specs = {
     end
   },
 
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("config.refactoring")
+    end,
+  },
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
@@ -216,6 +225,7 @@ local plugin_specs = {
   'daschw/leaf.nvim',
   'adigitoleo/vim-mellow',
   'fcpg/vim-farout',
+  "challenger-deep-theme/vim",
 }
 
 local lazy_opts = {

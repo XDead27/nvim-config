@@ -41,4 +41,4 @@ function ToggleLineBreaking()
 end
 
 -- Set the keymap to toggle line breaking with <Leader>b
-vim.api.nvim_set_keymap('n', '<Leader>b', ':lua ToggleLineBreaking()<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>b', ':lua ToggleLineBreaking()<CR>', { noremap = true, silent = true, desc = "Toggle Line [B]reaking" })

@@ -11,6 +11,16 @@ local colorscheme_conf = {
           autocmd ColorScheme mellow hi EndOfBuffer guibg=None
         augroup END]])
         vim.cmd('colorscheme mellow')
+    end,
+
+    challenger_deep = function ()
+        vim.cmd('colorscheme challenger_deep')
+    end,
+
+    afterglow = function ()
+        vim.g.afterglow_italic_comments = 1
+        vim.g.afterglow_inherit_background = 0
+        vim.cmd('colorscheme afterglow')
     end
 }
 
