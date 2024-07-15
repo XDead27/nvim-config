@@ -31,7 +31,7 @@ local plugin_specs = {
       require("config.lsp")
     end,
   },
-  
+
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -97,6 +97,9 @@ local plugin_specs = {
 
   {
     'nvim-tree/nvim-tree.lua',
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+    },
     config = function ()
       require("config.nvim-tree")
     end
@@ -157,8 +160,8 @@ local plugin_specs = {
   },
 
   {
-    "ellisonleao/glow.nvim", 
-    config = true, 
+    "ellisonleao/glow.nvim",
+    config = true,
     cmd = "Glow"
   },
 
@@ -218,6 +221,27 @@ local plugin_specs = {
       require("config.refactoring")
     end,
   },
+
+  -- I don't need this right now
+  -- {
+  --   "folke/trouble.nvim",
+  --   dependencies = {
+  --     'nvim-tree/nvim-web-devicons',
+  --   },
+  --   config = function()
+  --     require("config.trouble")
+  --   end,
+  -- },
+
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require("config.todo-comments")
+    end,
+  },
+
+  'aserebryakov/vim-todo-lists',
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',

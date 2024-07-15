@@ -1,12 +1,18 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+-- local open_with_trouble = require("trouble.sources.telescope").open
+
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+	-- ['<C-t>'] = open_with_trouble,
       },
+      n = {
+	-- ['<C-t>'] = open_with_trouble,
+      }
     },
   },
 }
