@@ -243,6 +243,8 @@ local plugin_specs = {
 
   'aserebryakov/vim-todo-lists',
 
+  'github/copilot.vim',
+
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
   'jpo/vim-railscasts-theme',
