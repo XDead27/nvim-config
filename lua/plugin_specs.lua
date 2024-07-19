@@ -245,6 +245,13 @@ local plugin_specs = {
 
   'github/copilot.vim',
 
+  {
+    'natecraddock/workspaces.nvim',
+    config = function ()
+      require('config.workspaces')
+    end
+  },
+
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
   'jpo/vim-railscasts-theme',

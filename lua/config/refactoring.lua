@@ -32,3 +32,13 @@ vim.keymap.set({"x", "n"}, "<leader>rv", function() require('refactoring').debug
 
 vim.keymap.set("n", "<leader>rc", function() require('refactoring').debug.cleanup({}) end, { desc = "Debug [C]leanup" })
 -- Supports only normal mode
+
+-- load refactoring Telescope extension
+require("telescope").load_extension("refactoring")
+
+vim.keymap.set(
+	{"n", "x"},
+	"<leader>rr",
+	function() require('telescope').extensions.refactoring.refactors() end,
+    { desc = "Choose [R]efactor" }
+)
