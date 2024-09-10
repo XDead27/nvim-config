@@ -253,6 +253,10 @@ local plugin_specs = {
     end
   },
 
+  {
+    'whonore/Coqtail',
+  },
+
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
   'jpo/vim-railscasts-theme',
