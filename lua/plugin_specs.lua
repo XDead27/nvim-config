@@ -105,7 +105,14 @@ local plugin_specs = {
     end
   },
 
-  "kylechui/nvim-surround",
+  {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+        require("config.nvim-surround")
+    end
+  },
 
   {
     "nvim-lualine/lualine.nvim",
@@ -157,12 +164,6 @@ local plugin_specs = {
 
   {
     'mrcjkb/haskell-snippets.nvim'
-  },
-
-  {
-    "ellisonleao/glow.nvim",
-    config = true,
-    cmd = "Glow"
   },
 
   {
@@ -244,6 +245,21 @@ local plugin_specs = {
   'aserebryakov/vim-todo-lists',
 
   'github/copilot.vim',
+
+  -- Markdown plugins
+
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  {
+      "lukas-reineke/headlines.nvim",
+      dependencies = "nvim-treesitter/nvim-treesitter",
+      config = true, -- or `opts = {}`
+  },
 
   {
     'natecraddock/workspaces.nvim',
