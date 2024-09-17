@@ -187,7 +187,8 @@ local plugin_specs = {
       'mrcjkb/neotest-haskell',
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
-      "nvim-treesitter/nvim-treesitter"
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-neotest/nvim-nio"
     },
     config = function ()
       require("config.neotest")

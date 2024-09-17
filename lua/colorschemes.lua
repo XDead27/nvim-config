@@ -27,7 +27,7 @@ local colorscheme_conf = {
 local filename = "nvim.properties"
 local properties, err = utils.loadProperties(filename)
 if not properties then
-    print("Error:", err)
+    print("Using default colorscheme.")
 else
     -- Load colorscheme 
     colorscheme_conf[properties["colorscheme"]]()
