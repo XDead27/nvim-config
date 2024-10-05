@@ -257,9 +257,9 @@ local plugin_specs = {
   },
 
   {
-      "lukas-reineke/headlines.nvim",
-      dependencies = "nvim-treesitter/nvim-treesitter",
-      config = true, -- or `opts = {}`
+    "lukas-reineke/headlines.nvim",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    config = true, -- or `opts = {}`
   },
 
   {
@@ -267,6 +267,16 @@ local plugin_specs = {
     config = function ()
       require('config.workspaces')
     end
+  },
+
+  {
+    'nvim-java/nvim-java',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+    },
+    config = function()
+      require("config.java")
+    end,
   },
 
   -- Colorschemes
