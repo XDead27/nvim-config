@@ -265,6 +265,7 @@ local plugin_specs = {
   {
     'XDead27/nvim-config-switch',
     config = function ()
+      require('config.nvim-config-switch')
     end
   },
 
