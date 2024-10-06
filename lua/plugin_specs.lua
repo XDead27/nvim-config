@@ -263,6 +263,12 @@ local plugin_specs = {
   },
 
   {
+    'XDead27/nvim-config-switch',
+    config = function ()
+    end
+  },
+
+  {
     'natecraddock/workspaces.nvim',
     config = function ()
       require('config.workspaces')
