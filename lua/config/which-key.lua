@@ -1,23 +1,28 @@
-require('which-key').setup({})
+local api = require('which-key')
+api.setup({})
 
--- document existing key chains
-require('which-key').register {
-  ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-  ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
-  ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
-  ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
-  ['<leader>r'] = { name = '[R]efactor', _ = 'which_key_ignore' },
-  ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
-  ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
-  ['<leader>t'] = { name = '[T]est', _ = 'which_key_ignore' },
-  ['<leader>f'] = { name = '[F]iles', _ = 'which_key_ignore' },
-  ['<leader>x'] = { name = 'E[x]ecute', _ = 'which_key_ignore' },
-}
--- register which-key VISUAL mode
--- required for visual <leader>hs (hunk stage) to work
-require('which-key').register({
-  ['<leader>'] = { name = 'VISUAL <leader>' },
-  ['<leader>h'] = { 'Git [H]unk' },
-  ['<leader>r'] = { '[R]efactor' },
-}, { mode = 'v' })
+-- new api
+-- add groups
+api.add({
+  {"<leader>c", group = "[C]ode"},
+  {"<leader>d", group = "[D]ocument"},
+  {"<leader>g", group = "[G]it"},
+  {"<leader>h", group = "Git [H]unk"},
+  {"<leader>r", group = "[R]efactor"},
+  {"<leader>s", group = "[S]earch"},
+  {"<leader>w", group = "[W]orkspace"},
+  {"<leader>t", group = "[T]est"},
+  {"<leader>f", group = "[F]iles"},
+  {"<leader>x", group = "E[x]ecute"},
+})
+
+-- visual mode 
+api.add({
+  {
+    mode = { "v" },
+    { "<leader>", group = "VISUAL <leader>" },
+    { "<leader>h", desc = "Git [H]unk" },
+    { "<leader>r", desc = "[R]efactor" },
+  },
+})
 
