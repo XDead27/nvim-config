@@ -278,6 +278,9 @@ local plugin_specs = {
 
   {
     'whonore/Coqtail',
+    config = function ()
+      require('config.coqtail')
+    end
   },
 
   -- Colorschemes
