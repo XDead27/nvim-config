@@ -5,9 +5,6 @@ local luasnip = require 'luasnip'
 require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
-local haskell_snippets = require('haskell-snippets').all
-luasnip.add_snippets('haskell', haskell_snippets, { key = 'haskell' })
-
 cmp.setup {
   snippet = {
     expand = function(args)
