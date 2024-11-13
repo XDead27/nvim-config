@@ -70,6 +70,7 @@ local servers = {
   -- tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   -- haskell_language_server = {},
+  texlab = {},
 
   lua_ls = {
     Lua = {

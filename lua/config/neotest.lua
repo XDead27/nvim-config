@@ -2,9 +2,6 @@
 
 require("neotest").setup({
   adapters = {
-    require("neotest-haskell") {
-      build_tools = { 'stack' },
-    },
   },
   vim.cmd("command Testt lua require('neotest').summary.toggle()"),
   vim.cmd("command Testrf lua require('neotest').run.run(vim.fn.expand('%'))"),

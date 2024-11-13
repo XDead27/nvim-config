@@ -157,16 +157,6 @@ local plugin_specs = {
   },
 
   {
-    'mrcjkb/haskell-tools.nvim',
-    version = '^3', -- Recommended
-    ft = { 'haskell', 'lhaskell', 'stack', 'stackproject', 'cabal', 'cabalproject' },
-  },
-
-  {
-    'mrcjkb/haskell-snippets.nvim'
-  },
-
-  {
     'https://git.sr.ht/~whynothugo/lsp_lines.nvim',
     config = function ()
       require('config.lsplines')
@@ -184,7 +174,6 @@ local plugin_specs = {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-neotest/neotest",
-      'mrcjkb/neotest-haskell',
       "nvim-lua/plenary.nvim",
       "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
@@ -245,7 +234,14 @@ local plugin_specs = {
 
   'aserebryakov/vim-todo-lists',
 
-  'github/copilot.vim',
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function ()
+      require('config.copilot')
+    end
+  },
 
   -- Markdown plugins
 
@@ -260,6 +256,15 @@ local plugin_specs = {
       "lukas-reineke/headlines.nvim",
       dependencies = "nvim-treesitter/nvim-treesitter",
       config = true, -- or `opts = {}`
+  },
+
+  -- LaTeX plugins
+  {
+    "lervag/vimtex",
+    lazy = false,
+    init = function()
+      vim.g.vimtex_view_method = "mupdf"
+    end
   },
 
   {
