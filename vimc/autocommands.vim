@@ -7,3 +7,6 @@ augroup glsl_files
   autocmd BufRead,BufNewFile *.frag set filetype=glsl
 augroup END
 
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
