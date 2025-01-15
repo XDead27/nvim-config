@@ -5,7 +5,8 @@ api.setup({})
 -- add groups
 api.add({
   {"<leader>c", group = "[C]ode"},
-  {"<leader>d", group = "[D]ocument"},
+  {"<leader>d", group = "[D]ebug"},
+  {"<leader>du", group = "[D]ebug] [U]I"},
   {"<leader>g", group = "[G]it"},
   {"<leader>h", group = "Git [H]unk"},
   {"<leader>r", group = "[R]efactor"},

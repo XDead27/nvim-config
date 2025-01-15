@@ -33,6 +33,13 @@ local plugin_specs = {
   },
 
   {
+    'folke/neodev.nvim',
+    config = function()
+      require("config.neodev")
+    end,
+  },
+
+  {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -299,6 +306,33 @@ local plugin_specs = {
       { "<c-\\>", "<cmd>TmuxNavigatePrevious<cr>" },
     },
   },
+
+  -- DAP
+  {
+    'mfussenegger/nvim-dap',
+    config = function ()
+      require('config.dap')
+    end
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    },
+    config = function ()
+      require('config.dap-ui')
+    end
+  },
+
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    config = function ()
+      require('config.dap-virtual-text')
+    end
+  },
+
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
