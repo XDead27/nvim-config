@@ -61,6 +61,8 @@ local plugin_specs = {
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -220,17 +222,6 @@ local plugin_specs = {
     end,
   },
 
-  -- I don't need this right now
-  -- {
-  --   "folke/trouble.nvim",
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons',
-  --   },
-  --   config = function()
-  --     require("config.trouble")
-  --   end,
-  -- },
-
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -333,6 +324,19 @@ local plugin_specs = {
     end
   },
 
+  {
+    'saecki/crates.nvim',
+    tag = 'stable',
+    config = function ()
+      require('crates').setup()
+    end
+  },
+
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',

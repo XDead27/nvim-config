@@ -2,6 +2,7 @@
 
 require("neotest").setup({
   adapters = {
+    ['rustaceannvim.neotest'] = {},
   },
   vim.cmd("command Testt lua require('neotest').summary.toggle()"),
   vim.cmd("command Testrf lua require('neotest').run.run(vim.fn.expand('%'))"),

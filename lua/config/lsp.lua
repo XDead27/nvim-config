@@ -78,13 +78,12 @@ local servers = {
       },
     },
   },
+  rust_analyzer = { enabled = false },
 
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
-      -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-      -- diagnostics = { disable = { 'missing-fields' } },
     },
   },
 }
@@ -101,6 +100,8 @@ mason_lspconfig.setup {
 }
 
 mason_lspconfig.setup_handlers {
+  ['rust_analyzer'] = function () end,
+
   function(server_name)
     require('lspconfig')[server_name].setup {
       capabilities = capabilities,

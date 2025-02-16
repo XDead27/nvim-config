@@ -2,8 +2,13 @@ require('dapui').setup()
 
 -- Keybinds
 --
+local wk = require('which-key')
 
-vim.keymap.set('n', '<leader>dui', require('dapui').toggle, { noremap = true, silent = true, buffer = 0, desc = 'Toggle [D]ebugger [UI]' })
+wk.add({
+    mode = { 'n' },
+    { '<leader>dui', function() require('dapui').toggle() end, desc = '[D]ebugger [UI]' },
+})
+
 -- vim.keymap.set('n', '<leader>dhh', require('dap.ui.variables').hover, { noremap = true, silent = true, buffer = 0, desc = 'Show [D]ebugger [H]over Information' })
 -- vim.keymap.set('n', '<leader>dhv', require('dap.ui.variables').visual_hover, { noremap = true, silent = true, buffer = 0, desc = 'Show [D]ebugger [H]over Information' })
 --

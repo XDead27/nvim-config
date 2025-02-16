@@ -104,13 +104,16 @@ dap.configurations.rust = dap.configurations.c
 
 -- Keybindings
 --
+local wk = require('which-key')
 
-vim.keymap.set({ 'n' }, '<leader>db', dap.toggle_breakpoint, { noremap = true, silent = true, buffer = 0, desc = '[T]oggle [B]reakpoint' })
-
-vim.keymap.set({ 'n' }, '<leader>dc', dap.continue, { noremap = true, silent = true, buffer = 0, desc = '[C]ontinue' })
-vim.keymap.set({ 'n' }, '<leader>ds', dap.step_over, { noremap = true, silent = true, buffer = 0, desc = '[S]tep Over' })
-vim.keymap.set({ 'n' }, '<leader>dsi', dap.step_into, { noremap = true, silent = true, buffer = 0, desc = '[S]tep [I]nto' })
-vim.keymap.set({ 'n' }, '<leader>dso', dap.step_out, { noremap = true, silent = true, buffer = 0, desc = '[S]tep [O]ut' })
-
-vim.keymap.set({ 'n' }, '<leader>drl', dap.run_last, { noremap = true, silent = true, buffer = 0, desc = '[R]un [L]ast' })
-vim.keymap.set({ 'n' }, '<leader>dro', dap.repl.open, { noremap = true, silent = true, buffer = 0, desc = '[R]epl [O]pen' })
+wk.add({
+  mode = { 'n' },
+  { '<leader>db', function() dap.toggle_breakpoint() end, desc = '[D]ebug [B]reakpoint' },
+  { '<leader>dc', function() dap.continue() end, desc = '[D]ebug [C]ontinue' },
+  { '<leader>ds', function() dap.step_over() end, desc = '[D]ebug [S]tep Over' },
+  { '<leader>dsi', function() dap.step_into() end, desc = '[D]ebug [S]tep [I]nto' },
+  { '<leader>dso', function() dap.step_out() end, desc = '[D]ebug [S]tep [O]ut' },
+  { '<leader>dr', group = '[D]ebug [R]un' },
+  { '<leader>drl', function() dap.run_last() end, desc = '[D]ebug [R]un [L]ast' },
+  { '<leader>dro', function() dap.repl.open() end, desc = '[D]ebug [R]epl [O]pen' },
+})
