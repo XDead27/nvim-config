@@ -16,7 +16,7 @@ vim.g.rustaceanvim = {
                     enable = true,
                 },
                 check = {
-                    workspace = true,
+                    targets={"x86_64-unknown-linux-gnu", "thumbv6m-none-eabi"},
                 },
             },
         },
