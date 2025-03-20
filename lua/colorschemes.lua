@@ -21,6 +21,10 @@ local colorscheme_conf = {
         vim.g.afterglow_italic_comments = 1
         vim.g.afterglow_inherit_background = 0
         vim.cmd('colorscheme afterglow')
+    end,
+
+    leaf = function ()
+        vim.cmd('colorscheme leaf')
     end
 }
 
