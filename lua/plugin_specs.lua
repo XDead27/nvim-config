@@ -116,11 +116,10 @@ local plugin_specs = {
 
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("config.nvim-surround")
-    end
+      require("nvim-surround").setup()
+    end,
   },
 
   {
@@ -230,16 +229,20 @@ local plugin_specs = {
     end,
   },
 
-  'aserebryakov/vim-todo-lists',
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has("nvim-0.10.0") == 1,
+  },
 
   {
-    'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function ()
-      require('config.copilot')
-    end
+    'echasnovski/mini.diff',
+    version = false,
+    config = true,
   },
+
+  'aserebryakov/vim-todo-lists',
 
   -- Markdown plugins
 
@@ -340,6 +343,29 @@ local plugin_specs = {
       require('config.rustaceanvim')
     end
   },
+
+  -- AI plugins
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function ()
+      require('config.copilot')
+    end
+  },
+
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function ()
+      require('config.codecompanion')
+    end
+  },
+
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
