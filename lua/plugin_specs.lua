@@ -344,6 +344,12 @@ local plugin_specs = {
     end
   },
 
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+
   -- AI plugins
   {
     'zbirenbaum/copilot.lua',
