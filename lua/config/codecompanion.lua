@@ -17,7 +17,7 @@ local wk = require('which-key')
 wk.add({
   mode = { 'n', 'v' },
   { '<C-a>', "<cmd>CodeCompanionActions<cr>", desc = 'Code Companion' },
-  { '<LocalLeader>a', "<cmd>CodeCompanionChat Toggle<cr>", desc = 'CodeCompanion [A]ctions Toggle' },
+  { '<LocalLeader>a', "<cmd>CodeCompanionChat Toggle<cr>", desc = 'CodeCompanion Ch[a]t Toggle' },
 })
 
 wk.add({

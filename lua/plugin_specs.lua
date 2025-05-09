@@ -380,6 +380,7 @@ local plugin_specs = {
   'adigitoleo/vim-mellow',
   'fcpg/vim-farout',
   "challenger-deep-theme/vim",
+  "xero/miasma.nvim",
 }
 
 local lazy_opts = {

@@ -25,7 +25,11 @@ local colorscheme_conf = {
 
     leaf = function ()
         vim.cmd('colorscheme leaf')
-    end
+    end,
+
+    miasma = function ()
+        vim.cmd('colorscheme miasma')
+    end,
 }
 
 local filename = "nvim.properties"

@@ -15,4 +15,5 @@ wk.add({
   { '<leader>xx', function() ht.repl.toggle() end, desc = 'Repl Run' },
   { '<leader>xf', function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, desc = 'Repl [F]ile' },
   { '<leader>xq', function() ht.repl.quit() end, desc = 'Repl [Q]uit' },
+  { '<leader>ca', vim.lsp.buf.code_action, desc = '[C]ode [A]ction'},
 })
