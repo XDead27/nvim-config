@@ -16,4 +16,11 @@ wk.add({
   { '<leader>xf', function() ht.repl.toggle(vim.api.nvim_buf_get_name(0)) end, desc = 'Repl [F]ile' },
   { '<leader>xq', function() ht.repl.quit() end, desc = 'Repl [Q]uit' },
   { '<leader>ca', vim.lsp.buf.code_action, desc = '[C]ode [A]ction'},
+  { '<leader>rn', vim.lsp.buf.rename, desc = '[R]e[n]ame' },
+  { 'gd', require('telescope.builtin').lsp_definitions, desc = '[G]oto [D]efinition' },
+  { 'gr', require('telescope.builtin').lsp_references, desc = '[G]oto [R]eferences' },
+  { 'gI', require('telescope.builtin').lsp_implementations, desc = '[G]oto [I]mplementation' },
+  { '<leader>D', require('telescope.builtin').lsp_type_definitions, desc = 'Type [D]efinition' },
+  { '<leader>cd', require('telescope.builtin').lsp_document_symbols, desc = '[D]ocument Symbols' },
+  { 'K', vim.lsp.buf.hover, desc = 'Hover Documentation' },
 })

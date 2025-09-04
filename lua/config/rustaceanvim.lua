@@ -12,11 +12,28 @@ vim.g.rustaceanvim = {
         end,
         default_settings = {
             ['rust-analyzer'] = {
-                diagnistics = {
-                    enable = true,
+                checkOnSave = {
+                    enable = false,
+                },
+                diagnostics = {
+                    enable = false,
                 },
                 check = {
-                    targets={"x86_64-unknown-linux-gnu", "thumbv6m-none-eabi"},
+                    -- targets={"x86_64-unknown-linux-gnu", "thumbv6m-none-eabi", "wasm32-unknown-unknown"},
+                    workspace = true,
+                },
+                procMacro = {
+                    ignored = {
+                        leptos_macro = {
+                            "server",
+                        },
+                    },
+                },
+                cachePriming = {
+                    enable = false,
+                },
+                cargo = {
+                    targetDir = true,
                 },
             },
         },

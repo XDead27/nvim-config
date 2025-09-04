@@ -86,6 +86,12 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  bacon_ls = {
+    init_options = {
+      updateOnSave = true,
+      updateOnSaveWaitMillis = 1000,
+    }
+  },
 }
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
@@ -97,9 +103,6 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
-}
-
-mason_lspconfig.setup_handlers {
   ['rust_analyzer'] = function () end,
 
   function(server_name)
