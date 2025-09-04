@@ -289,6 +289,7 @@ local plugin_specs = {
     end
   },
 
+  {
     'christoomey/vim-tmux-navigator',
     cmd = {
       "TmuxNavigateLeft",
