@@ -33,6 +33,13 @@ local plugin_specs = {
   },
 
   {
+    'folke/neodev.nvim',
+    config = function()
+      require("config.neodev")
+    end,
+  },
+
+  {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -54,6 +61,8 @@ local plugin_specs = {
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline',
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
@@ -107,11 +116,10 @@ local plugin_specs = {
 
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
     event = "VeryLazy",
     config = function()
-        require("config.nvim-surround")
-    end
+      require("nvim-surround").setup()
+    end,
   },
 
   {
@@ -213,17 +221,6 @@ local plugin_specs = {
     end,
   },
 
-  -- I don't need this right now
-  -- {
-  --   "folke/trouble.nvim",
-  --   dependencies = {
-  --     'nvim-tree/nvim-web-devicons',
-  --   },
-  --   config = function()
-  --     require("config.trouble")
-  --   end,
-  -- },
-
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -232,16 +229,20 @@ local plugin_specs = {
     end,
   },
 
-  'aserebryakov/vim-todo-lists',
+  {
+    "folke/ts-comments.nvim",
+    opts = {},
+    event = "VeryLazy",
+    enabled = vim.fn.has("nvim-0.10.0") == 1,
+  },
 
   {
-    'zbirenbaum/copilot.lua',
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function ()
-      require('config.copilot')
-    end
+    'echasnovski/mini.diff',
+    version = false,
+    config = true,
   },
+
+  'aserebryakov/vim-todo-lists',
 
   -- Markdown plugins
 
@@ -288,6 +289,96 @@ local plugin_specs = {
     end
   },
 
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<c-w>h", "<cmd>TmuxNavigateLeft<cr>" },
+      { "<c-w>j", "<cmd>TmuxNavigateDown<cr>" },
+      { "<c-w>k", "<cmd>TmuxNavigateUp<cr>" },
+      { "<c-w>l", "<cmd>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd>TmuxNavigatePrevious<cr>" },
+    },
+  },
+
+  -- DAP
+  {
+    'mfussenegger/nvim-dap',
+    config = function ()
+      require('config.dap')
+    end
+  },
+
+  {
+    "rcarriga/nvim-dap-ui",
+    dependencies = {
+      "mfussenegger/nvim-dap",
+      "nvim-neotest/nvim-nio"
+    },
+    config = function ()
+      require('config.dap-ui')
+    end
+  },
+
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    config = function ()
+      require('config.dap-virtual-text')
+    end
+  },
+
+  {
+    'saecki/crates.nvim',
+    tag = 'stable',
+    config = function ()
+      require('crates').setup()
+    end
+  },
+
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+    config = function ()
+      require('config.rustaceanvim')
+    end
+  },
+
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^5', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+
+  -- AI plugins
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function ()
+      require('config.copilot')
+    end
+  },
+
+  {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function ()
+      require('config.codecompanion')
+    end
+  },
+
+
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
   'jpo/vim-railscasts-theme',
@@ -295,6 +386,7 @@ local plugin_specs = {
   'adigitoleo/vim-mellow',
   'fcpg/vim-farout',
   "challenger-deep-theme/vim",
+  "xero/miasma.nvim",
 }
 
 local lazy_opts = {
