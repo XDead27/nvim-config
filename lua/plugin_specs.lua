@@ -372,6 +372,19 @@ local plugin_specs = {
     end
   },
 
+  -- Collaboration
+  {
+    "azratul/live-share.nvim",
+    dependencies = {
+      "jbyuki/instant.nvim",
+    },
+    config = function()
+      vim.g.instant_username = "mrxdead"
+      require("live-share").setup({
+       -- Add your configuration here
+      })
+    end
+  },
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
