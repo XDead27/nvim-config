@@ -39,4 +39,7 @@ if not properties then
 else
     -- Load colorscheme 
     colorscheme_conf[properties["colorscheme"]]()
+    if properties["transparent"] == "true" then
+        vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+    end
 end
