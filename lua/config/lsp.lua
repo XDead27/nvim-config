@@ -1,12 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -78,7 +72,6 @@ local servers = {
       },
     },
   },
-  rust_analyzer = { enabled = false },
 
   lua_ls = {
     Lua = {
@@ -102,15 +95,23 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = vim.tbl_keys(servers),
-  ['rust_analyzer'] = function () end,
+  handlers = {
+    -- Default handler for everything else
+    function(server_name)
+      require("lspconfig")[server_name].setup {
+        capabilities = capabilities,
+        on_attach = on_attach,
+        settings = servers[server_name],
+        filetypes = (servers[server_name] or {}).filetypes,
+      }
+    end,
+  },
+}
 
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = capabilities,
-      on_attach = on_attach,
-      settings = servers[server_name],
-      filetypes = (servers[server_name] or {}).filetypes,
-    }
-  end,
+-- Tell Rustaceanvim to reuse your LSP on_attach and capabilities
+vim.g.rustaceanvim = {
+  server = {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  },
 }
