@@ -30,12 +30,22 @@ local colorscheme_conf = {
     miasma = function ()
         vim.cmd('colorscheme miasma')
     end,
+
+    default = function ()
+        vim.cmd('colorscheme default')
+    end,
 }
 
 local filename = "nvim.properties"
 local properties, err = utils.loadProperties(filename)
+local fallback = os.getenv("NVIM_COLORSCHEME") or "default"
+local transparent = os.getenv("NVIM_TRANSPARENT") or "false"
 if not properties then
     print("Using default colorscheme.")
+    colorscheme_conf[fallback]()
+    if transparent == "true" then
+        vim.cmd('hi Normal guibg=NONE ctermbg=NONE')
+    end
 else
     -- Load colorscheme 
     colorscheme_conf[properties["colorscheme"]]()
