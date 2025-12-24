@@ -327,6 +327,7 @@ local plugin_specs = {
     end
   },
 
+  -- Language specific plugins
   {
     'saecki/crates.nvim',
     tag = 'stable',
@@ -348,6 +349,16 @@ local plugin_specs = {
     'mrcjkb/haskell-tools.nvim',
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
+  },
+
+  {
+    'pmizio/typescript-tools.nvim',
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {
+      jsx_close_tag = {
+        enable = true,
+      },
+    },
   },
 
   -- AI plugins
