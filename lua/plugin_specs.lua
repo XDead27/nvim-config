@@ -46,15 +46,8 @@ local plugin_specs = {
       -- Snippet Engine & its associated nvim-cmp source
       {
         'L3MON4D3/LuaSnip',
-        build = (function()
-          -- Build Step is needed for regex support in snippets
-          -- This step is not supported in many windows environments
-          -- Remove the below condition to re-enable on windows
-          if vim.fn.has 'win32' == 1 then
-            return
-          end
-          return 'make install_jsregexp'
-        end)(),
+        version = "2.*", 
+        build = "make install_jsregexp",
       },
       'saadparwaiz1/cmp_luasnip',
 
@@ -172,13 +165,6 @@ local plugin_specs = {
   },
 
   {
-    'antoinemadec/FixCursorHold.nvim',
-    config = function ()
-      require("config.fixcursorhold")
-    end
-  },
-
-  {
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-neotest/neotest",
@@ -194,13 +180,6 @@ local plugin_specs = {
 
   {
     "starwing/luautf8",
-  },
-
-  {
-    "ashinkarov/nvim-agda",
-    dependencies = {
-      'starwing/luautf8'
-    },
   },
 
   {
@@ -243,6 +222,10 @@ local plugin_specs = {
   },
 
   'aserebryakov/vim-todo-lists',
+
+  {
+    'uga-rosa/ccc.nvim',
+  },
 
   -- Markdown plugins
 
@@ -358,6 +341,13 @@ local plugin_specs = {
       jsx_close_tag = {
         enable = true,
       },
+    },
+  },
+
+  {
+    "ashinkarov/nvim-agda",
+    dependencies = {
+      'starwing/luautf8'
     },
   },
 
