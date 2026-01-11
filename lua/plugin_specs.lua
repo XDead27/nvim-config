@@ -28,7 +28,7 @@ local plugin_specs = {
       'folke/neodev.nvim',
     },
     config = function()
-      require("config.lsp")
+      require("config.lsp.mason")
     end,
   },
 
@@ -68,7 +68,7 @@ local plugin_specs = {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = "VeryLazy",
+    lazy = false,
     config = function()
       require("config.treesitter")
     end,
@@ -325,6 +325,7 @@ local plugin_specs = {
     lazy = false, -- This plugin is already lazy
     config = function ()
       require('config.rustaceanvim')
+      require('config.lsp.rustaceanvim')
     end
   },
 
@@ -337,11 +338,9 @@ local plugin_specs = {
   {
     'pmizio/typescript-tools.nvim',
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {
-      jsx_close_tag = {
-        enable = true,
-      },
-    },
+    config = function ()
+      require('config.lsp.typescript')
+    end
   },
 
   {

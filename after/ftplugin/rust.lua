@@ -7,3 +7,8 @@ wk.add({
   { "<leader>xx", function () vim.cmd.RustLsp('run') end, desc = "E[x]ecute" },
   { "<leader>xr", function () vim.cmd.RustLsp('runnables') end, desc = "E[x]ecute [R]unnables" },
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'rust' },
+  callback = function() vim.treesitter.start() end,
+})
