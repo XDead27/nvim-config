@@ -333,6 +333,9 @@ local plugin_specs = {
     'mrcjkb/haskell-tools.nvim',
     version = '^5', -- Recommended
     lazy = false, -- This plugin is already lazy
+    config = function ()
+      require('config.lsp.haskell')
+    end
   },
 
   {
