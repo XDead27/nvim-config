@@ -3,6 +3,7 @@ local M = {}
 local wk = require("which-key")
 
 M.on_attach = function(client, bufnr)
+  print("LSP attached: " .. client.name)
   wk.add({
     mode = { "n" },
     buffer = bufnr,
@@ -25,7 +26,6 @@ M.on_attach = function(client, bufnr)
     { "<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, desc = "Workspace Symbols" },
 
     -- Docs
-    { "K", vim.lsp.buf.hover, desc = "Hover" },
     { "<C-k>", vim.lsp.buf.signature_help, desc = "Signature Help" },
 
     -- Workspace

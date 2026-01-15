@@ -51,16 +51,14 @@ local servers = {
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  handlers = {
-    -- Default handler for everything else
-    function(server_name)
-      require("lspconfig")[server_name].setup {
-        capabilities = lsp.capabilities,
-        on_attach = lsp.on_attach,
-        settings = servers[server_name],
-        filetypes = (servers[server_name] or {}).filetypes,
-      }
-    end,
-  },
+  ensure_installed = vim.tbl_keys(servers),
 }
 
+for _, server_name in ipairs(vim.tbl_keys(servers)) do
+  vim.lsp.config(server_name, {
+    capabilities = lsp.capabilities,
+    on_attach = lsp.on_attach,
+    settings = servers[server_name],
+    filetypes = (servers[server_name] or {}).filetypes,
+  })
+end
