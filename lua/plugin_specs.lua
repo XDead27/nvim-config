@@ -200,17 +200,12 @@ local plugin_specs = {
     dependencies = {
       "nvim-neotest/neotest",
       "nvim-lua/plenary.nvim",
-      "antoinemadec/FixCursorHold.nvim",
       "nvim-treesitter/nvim-treesitter",
       "nvim-neotest/nvim-nio"
     },
     config = function ()
       require("config.neotest")
     end
-  },
-
-  {
-    "starwing/luautf8",
   },
 
   {
@@ -277,13 +272,6 @@ local plugin_specs = {
     lazy = false,
     init = function()
       vim.g.vimtex_view_method = "mupdf"
-    end
-  },
-
-  {
-    'XDead27/nvim-config-switch',
-    config = function ()
-      require('config.nvim-config-switch')
     end
   },
 
@@ -420,11 +408,11 @@ local plugin_specs = {
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
-  'jpo/vim-railscasts-theme',
-  'daschw/leaf.nvim',
-  'adigitoleo/vim-mellow',
-  'fcpg/vim-farout',
-  "challenger-deep-theme/vim",
+  -- 'jpo/vim-railscasts-theme',
+  -- 'daschw/leaf.nvim',
+  -- 'adigitoleo/vim-mellow',
+  -- 'fcpg/vim-farout',
+  -- "challenger-deep-theme/vim",
   "xero/miasma.nvim",
 }
 

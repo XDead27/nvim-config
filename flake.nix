@@ -132,6 +132,7 @@
           comment-nvim
           conform-nvim
           fidget-nvim
+          friendly-snippets
           gitsigns-nvim
           headlines-nvim
           indent-blankline-nvim
@@ -184,6 +185,7 @@
 
           # colorschemes
           miasma-nvim
+          vim-afterglow
         ];
         debug = [
           nvim-dap
@@ -193,8 +195,9 @@
           nvim-nio
         ];
         neo-tree = [
-          neo-tree-nvim
+          fidget-nvim
           nui-nvim
+          nvim-tree-lua
           nvim-web-devicons
         ];
         latex = [
@@ -282,7 +285,7 @@
         # (and other information to pass to lua)
         categories = {
           general = true;
-          latex = false;
+          latex = true;
           neo-tree = true;
           debug = true;
         };
