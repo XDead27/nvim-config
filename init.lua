@@ -4,9 +4,10 @@ vim.loader.enable()
 local core_conf_files = {
   "globals.lua",
   "options.lua",
-  "autocommands.vim",
+  -- "autocommands.vim",
   "mappings.lua",
-  "plugins.vim",
+  -- "plugins.vim",
+  "plugin_specs.lua",
   "colorschemes.lua",
 }
 
