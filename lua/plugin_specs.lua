@@ -1,3 +1,8 @@
+
+require("nixCatsUtils").setup({
+  non_nix_value = true,
+})
+
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
@@ -17,15 +22,32 @@ local plugin_specs = {
     event = { "BufRead", "BufNewFile" },
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
-      'williamboman/mason-lspconfig.nvim',
-
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
+      {
+        'williamboman/mason.nvim',
+        enabled = require('nixCatsUtils').lazyAdd(true, false),
+        config = true
+      },
+      {
+        'williamboman/mason-lspconfig.nvim',
+        enabled = require('nixCatsUtils').lazyAdd(true, false),
+      },
+      {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        enabled = require('nixCatsUtils').lazyAdd(true, false),
+      },
+      {
+        'j-hui/fidget.nvim',
+        opts = {}
+      },
 
       -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim',
+      {
+        'folke/lazydev.nvim',
+        ft = 'lua',
+        config = function()
+          require('config.lazydev')
+        end,
+      },
     },
     config = function()
       require("config.lsp.mason")
@@ -33,9 +55,16 @@ local plugin_specs = {
   },
 
   {
-    'folke/neodev.nvim',
+    "antosha417/nvim-lsp-file-operations",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    -- Uncomment whichever supported plugin(s) you use
+      "nvim-tree/nvim-tree.lua",
+    -- "nvim-neo-tree/neo-tree.nvim",
+    -- "simonmclean/triptych.nvim"
+    },
     config = function()
-      require("config.neodev")
+      require("lsp-file-operations").setup()
     end,
   },
 
@@ -46,8 +75,16 @@ local plugin_specs = {
       -- Snippet Engine & its associated nvim-cmp source
       {
         'L3MON4D3/LuaSnip',
-        version = "2.*", 
-        build = "make install_jsregexp",
+        name = "luasnip",
+        build = require('nixCatsUtils').lazyAdd((function()
+          -- Build Step is needed for regex support in snippets.
+          -- This step is not supported in many windows environments.
+          -- Remove the below condition to re-enable on windows.
+          if vim.fn.has 'win32' == 1 or vim.fn.executable 'make' == 0 then
+            return
+          end
+          return 'make install_jsregexp'
+        end)()),
       },
       'saadparwaiz1/cmp_luasnip',
 
@@ -73,10 +110,6 @@ local plugin_specs = {
       require("config.treesitter")
     end,
   },
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -132,7 +165,7 @@ local plugin_specs = {
     opts = {},
   },
 
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim', name = "comment.nvim", opts = {} },
 
   {
     "nvim-telescope/telescope.nvim",
@@ -144,12 +177,10 @@ local plugin_specs = {
       -- requirements installed.
       {
         'nvim-telescope/telescope-fzf-native.nvim',
-        -- NOTE: If you are having trouble with this installation,
-        --       refer to the README for telescope-fzf-native for more instructions.
-        build = 'make',
-        cond = function()
+        build = require('nixCatsUtils').lazyAdd 'make',
+        cond = require('nixCatsUtils').lazyAdd(function()
           return vim.fn.executable 'make' == 1
-        end,
+        end),
       },
     },
     config = function()
@@ -220,8 +251,6 @@ local plugin_specs = {
     version = false,
     config = true,
   },
-
-  'aserebryakov/vim-todo-lists',
 
   {
     'uga-rosa/ccc.nvim',
@@ -346,12 +375,12 @@ local plugin_specs = {
     end
   },
 
-  {
-    "ashinkarov/nvim-agda",
-    dependencies = {
-      'starwing/luautf8'
-    },
-  },
+  -- {
+  --   "ashinkarov/nvim-agda",
+  --   dependencies = {
+  --     'starwing/luautf8'
+  --   },
+  -- },
 
   -- AI plugins
   {
@@ -375,19 +404,19 @@ local plugin_specs = {
     end
   },
 
-  -- Collaboration
-  {
-    "azratul/live-share.nvim",
-    dependencies = {
-      "jbyuki/instant.nvim",
-    },
-    config = function()
-      vim.g.instant_username = "mrxdead"
-      require("live-share").setup({
-       -- Add your configuration here
-      })
-    end
-  },
+  -- -- Collaboration
+  -- {
+  --   "azratul/live-share.nvim",
+  --   dependencies = {
+  --     "jbyuki/instant.nvim",
+  --   },
+  --   config = function()
+  --     vim.g.instant_username = "mrxdead"
+  --     require("live-share").setup({
+  --      -- Add your configuration here
+  --     })
+  --   end
+  -- },
 
   -- Colorschemes
   'danilo-augusto/vim-afterglow',
@@ -399,11 +428,20 @@ local plugin_specs = {
   "xero/miasma.nvim",
 }
 
+local function getlockfilepath()
+  if require('nixCatsUtils').isNixCats and type(nixCats.settings.unwrappedCfgPath) == 'string' then
+    return nixCats.settings.unwrappedCfgPath .. '/lazy-lock.json'
+  else
+    return vim.fn.stdpath 'config' .. '/lazy-lock.json'
+  end
+end
+
 local lazy_opts = {
+  lockfile = getlockfilepath(),
   ui = {
     title = "Plugin Manager",
     title_pos = "center",
   },
 }
 
-require("lazy").setup(plugin_specs, lazy_opts)
+require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 'lazy.nvim' }, plugin_specs, lazy_opts)
