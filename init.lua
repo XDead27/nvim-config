@@ -1,28 +1,19 @@
 
 vim.loader.enable()
 
-local core_conf_files = {
+local lua_conf_files = {
   "globals.lua",
   "options.lua",
-  -- "autocommands.vim",
+  "autocommands.lua",
   "mappings.lua",
-  -- "plugins.vim",
   "plugin_specs.lua",
   "colorschemes.lua",
 }
 
-local viml_conf_dir = vim.fn.stdpath("config") .. "/vimc"
--- source all the core config files
-for _, file_name in ipairs(core_conf_files) do
-  if vim.endswith(file_name, 'vim') then
-    local path = string.format("%s/%s", viml_conf_dir, file_name)
-    local source_cmd = "source " .. path
-    vim.cmd(source_cmd)
-  else
-    local module_name, _ = string.gsub(file_name, "%.lua", "")
-    package.loaded[module_name] = nil
-    require(module_name)
-  end
+for _, file_name in ipairs(lua_conf_files) do
+  local module_name, _ = string.gsub(file_name, "%.lua", "")
+  package.loaded[module_name] = nil
+  require(module_name)
 end
 
 -- vim: ts=2 sts=2 sw=2 et

@@ -51,13 +51,7 @@ end
 
 
 
-if require('nixCatsUtils').isNixCats then
-  -- set up the servers to be loaded on the appropriate filetypes!
-  for server_name, cfg in pairs(servers) do
-    vim.lsp.config(server_name, cfg)
-    vim.lsp.enable(server_name)
-  end
-else
+if not require('nixCatsUtils').isNixCats then
   -- NOTE: nixCats: and if no nix, use mason
 
   -- Ensure the servers and tools above are installed
@@ -76,29 +70,15 @@ else
   })
   require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
-  require('mason-lspconfig').setup {
-    handlers = {
-      function(server_name)
-        vim.lsp.config(server_name, {
-          settings = servers[server_name] or {}
-        })
-        vim.lsp.enable(server_name)
-      end,
-    },
-  }
+  require('mason-lspconfig').setup { }
 end
 
--- TODO: See if this works, improve with example from kickstart.nvim
-vim.lsp.config('*', {
-  capabilities = lsp.capabilities,
-  on_attach = lsp.on_attach,
-})
-
--- for _, server_name in ipairs(vim.tbl_keys(servers)) do
---   vim.lsp.config(server_name, {
---     capabilities = lsp.capabilities,
---     on_attach = lsp.on_attach,
---     settings = servers[server_name],
---     filetypes = (servers[server_name] or {}).filetypes,
---   })
--- end
+for server_name, cfg in pairs(servers) do
+  vim.lsp.config(server_name, {
+    capabilities = lsp.capabilities,
+    on_attach = lsp.on_attach,
+    settings = cfg,
+    filetypes = (cfg or {}).filetypes,
+  })
+  vim.lsp.enable(server_name)
+end
