@@ -97,6 +97,9 @@
           bash-language-server
           clang-tools
           fd
+          ghc
+          haskell-language-server
+          haskellPackages.hoogle
           lua-language-server
           nix-doc
           nixd
