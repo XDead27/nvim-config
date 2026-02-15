@@ -95,6 +95,7 @@
         general = [
           bacon
           bash-language-server
+          cabal-install
           clang-tools
           fd
           ghc
@@ -110,6 +111,7 @@
           stylua
           tree-sitter
           universal-ctags
+          zlib
         ];
         debug = [
           delve
