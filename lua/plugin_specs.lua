@@ -269,9 +269,13 @@ local plugin_specs = {
   -- LaTeX plugins
   {
     "lervag/vimtex",
+    dependencies = {
+      "micangl/cmp-vimtex",
+    },
     lazy = false,
     init = function()
       vim.g.vimtex_view_method = "mupdf"
+      vim.g.vimtex_compiler_progname = 'nvr'
     end
   },
 

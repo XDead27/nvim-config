@@ -95,12 +95,8 @@
         general = [
           bacon
           bash-language-server
-          cabal-install
           clang-tools
           fd
-          ghc
-          haskell-language-server
-          haskellPackages.hoogle
           lua-language-server
           nix-doc
           nixd
@@ -116,9 +112,22 @@
         debug = [
           delve
         ];
+        haskell = [
+          cabal-install
+          ghc
+          haskell-language-server
+          haskellPackages.hoogle
+        ];
         latex = [
-          mupdf
-          # TODO: add a proper latex distribution
+          neovim-remote
+          pstree
+          settings.latex-pdf-reader
+          xdotool
+
+          (texlive.combine { 
+            inherit (pkgs.texlive) scheme-medium 
+              biber;
+          })
         ];
       };
 
@@ -182,9 +191,6 @@
           crates-nvim
           rustaceanvim
 
-          # haskell
-          haskell-tools-nvim
-
           # typescript
           typescript-tools-nvim
 
@@ -204,6 +210,9 @@
           nui-nvim
           nvim-tree-lua
           nvim-web-devicons
+        ];
+        haskell = [
+          haskell-tools-nvim
         ];
         latex = [
           cmp-vimtex
@@ -285,14 +294,17 @@
           # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
           hosts.python3.enable = true;
           hosts.node.enable = true;
+
+          latex-pdf-reader = pkgs.mupdf;
         };
         # and a set of categories that you want
         # (and other information to pass to lua)
         categories = {
           general = true;
-          latex = true;
           neo-tree = true;
           debug = true;
+          haskell = true;
+          latex = true;
         };
       };
     };
