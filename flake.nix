@@ -107,6 +107,7 @@
           stylua
           tree-sitter
           universal-ctags
+          vectorcode
           zlib
         ];
         debug = [
@@ -186,6 +187,7 @@
           # AI
           copilot-lua
           codecompanion-nvim
+          codecompanion-history-nvim
           
           # rust
           crates-nvim
