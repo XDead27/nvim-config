@@ -3,7 +3,7 @@ local api = require('codecompanion')
 api.setup({
   display = {
     action_palette = {
-      provider = "telescope",
+      provider = "default",
     },
   },
 

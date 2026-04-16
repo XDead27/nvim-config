@@ -2,8 +2,7 @@ local M = {}
 
 local wk = require("which-key")
 
-M.on_attach = function(client, bufnr)
-  print("LSP attached: " .. client.name)
+M.on_attach = function(_, bufnr)
   wk.add({
     mode = { "n" },
     buffer = bufnr,

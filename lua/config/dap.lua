@@ -140,4 +140,5 @@ wk.add({
   { '<leader>drl', function() dap.run_last() end, desc = '[D]ebug [R]un [L]ast' },
   { '<leader>dro', function() dap.repl.open() end, desc = '[D]ebug [R]epl [O]pen' },
   { '<leader>df', function() require("telescope").extensions.dap.configuarations() end, desc = '[D]ebug [F]ile Configurations' },
+  { '<leader>dt', function() dap.terminate() end, desc = '[D]ebug [T]erminate' },
 })

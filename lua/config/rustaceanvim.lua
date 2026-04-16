@@ -19,7 +19,7 @@ vim.g.rustaceanvim = {
                     enable = false,
                 },
                 check = {
-                    -- targets={"x86_64-unknown-linux-gnu", "thumbv6m-none-eabi", "wasm32-unknown-unknown"},
+                    targets={"x86_64-unknown-linux-gnu", "thumbv6m-none-eabi"},
                     workspace = true,
                 },
                 procMacro = {

@@ -40,6 +40,7 @@ local servers = {
       updateOnSaveWaitMillis = 1000,
     }
   },
+  gopls = {},
 }
 
 if require('nixCatsUtils').isNixCats then
