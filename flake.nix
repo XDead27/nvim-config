@@ -96,7 +96,7 @@
           bacon
           bash-language-server
           clang-tools
-          claude-code-acp
+          claude-agent-acp
           fd
           lua-language-server
           nix-doc
