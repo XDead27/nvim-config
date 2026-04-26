@@ -97,6 +97,7 @@
           bash-language-server
           clang-tools
           claude-agent-acp
+          claude-code-bin
           fd
           lua-language-server
           nix-doc
@@ -173,7 +174,6 @@
           plenary-nvim
           plenary-nvim
           refactoring-nvim
-          async-nvim
           telescope-fzf-native-nvim
           telescope-nvim
           telescope-ui-select-nvim
