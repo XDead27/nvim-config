@@ -173,6 +173,7 @@
           plenary-nvim
           plenary-nvim
           refactoring-nvim
+          async-nvim
           telescope-fzf-native-nvim
           telescope-nvim
           telescope-ui-select-nvim
