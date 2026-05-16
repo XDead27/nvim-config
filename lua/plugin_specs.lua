@@ -251,6 +251,21 @@ local plugin_specs = {
     'uga-rosa/ccc.nvim',
   },
 
+  {
+    'stevearc/conform.nvim',
+    config = function ()
+      require('config.conform')
+    end
+  },
+
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function()
+      require("config.autopairs")
+    end,
+  },
+
   -- Markdown plugins
 
   {

@@ -94,23 +94,33 @@
       lspsAndRuntimeDeps = with pkgs; {
         general = [
           bacon
-          bash-language-server
           clang-tools
           claude-agent-acp
           claude-code-bin
           fd
-          lua-language-server
           nix-doc
-          nixd
-          pyright
           ripgrep
-          ruff
           stdenv.cc.cc
           stylua
           tree-sitter
           universal-ctags
           vectorcode
           zlib
+
+          # language servers
+          bash-language-server
+          gopls
+          lua-language-server
+          nixd
+          pyright
+          ruff
+
+          # formatters
+          black
+          isort
+          nixfmt
+          rustfmt
+          stylua
         ];
         debug = [
           delve
