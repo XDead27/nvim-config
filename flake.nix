@@ -114,7 +114,7 @@
               bacon
               clang-tools
               claude-agent-acp
-              claude-code-bin
+              claude-code
               fd
               nix-doc
               ripgrep

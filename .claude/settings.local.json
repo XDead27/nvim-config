@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nvim --headless -c \"lua print\\(nixCats.vimPackDir\\)\" -c \"q\")",
+      "Bash(nvim --headless -c \"lua vim.print\\(require\\(''nixCats''\\).vimPackDir\\)\" -c \"q\")"
+    ]
+  }
+}
