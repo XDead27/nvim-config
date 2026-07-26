@@ -122,7 +122,7 @@
               stylua
               tree-sitter
               universal-ctags
-              vectorcode
+              # vectorcode
               zlib
 
               # language servers
