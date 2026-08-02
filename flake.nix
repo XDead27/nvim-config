@@ -167,6 +167,7 @@
           startupPlugins = with pkgs.vimPlugins; {
             general = [
               alpha-nvim
+              base16-nvim
               ccc-nvim
               cmp-buffer
               cmp-cmdline
