@@ -440,11 +440,12 @@ local plugin_specs = {
 	{
 		"RRethy/base16-nvim",
 		config = function()
-			local ok, module = pcall(require, "matugen")
-
-			if ok then
-				module.setup()
-			end
+			-- local ok, module = pcall(require, "matugen")
+			--
+			-- if ok then
+			-- 	module.setup()
+			-- end
+			require("matugen").setup()
 		end,
 	},
 }
