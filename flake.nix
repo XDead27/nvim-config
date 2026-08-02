@@ -155,12 +155,11 @@
               settings.latex-pdf-reader
               xdotool
 
-              (texlive.combine {
-                inherit (pkgs.texlive)
-                  scheme-full
+              (texliveFull.withPackages (
+                ps: with ps; [
                   biber
-                  ;
-              })
+                ]
+              ))
             ];
           };
 
