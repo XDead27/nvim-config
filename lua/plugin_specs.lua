@@ -437,17 +437,16 @@ local plugin_specs = {
 	-- 'fcpg/vim-farout',
 	-- "challenger-deep-theme/vim",
 	"xero/miasma.nvim",
-	{
-		"RRethy/base16-nvim",
-		config = function()
-			local ok, module = pcall(require, "matugen")
-
-			if ok then
-				module.setup()
-			end
-			-- require("matugen").setup()
-		end,
-	},
+	-- {
+	-- 	"RRethy/base16-nvim",
+	-- 	config = function()
+	-- 		local ok, module = pcall(require, "matugen")
+	--
+	-- 		if ok then
+	-- 			module.setup()
+	-- 		end
+	-- 	end,
+	-- },
 }
 
 local function getlockfilepath()
