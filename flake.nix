@@ -58,7 +58,7 @@
       # will not apply to module imports
       # as that will have your system values
       extra_pkg_config = {
-        # allowUnfree = true;
+        allowUnfree = true;
       };
       # management of the system variable is one of the harder parts of using flakes.
 
@@ -113,8 +113,6 @@
             general = [
               bacon
               clang-tools
-              claude-agent-acp
-              claude-code
               fd
               nix-doc
               ripgrep
@@ -122,7 +120,6 @@
               stylua
               tree-sitter
               universal-ctags
-              # vectorcode
               zlib
 
               # language servers
@@ -160,6 +157,11 @@
                   biber
                 ]
               ))
+            ];
+            ai = [
+              claude-agent-acp
+              claude-code
+              vectorcode
             ];
           };
 
@@ -216,11 +218,6 @@
               which-key-nvim
               workspaces-nvim
 
-              # AI
-              copilot-lua
-              codecompanion-nvim
-              codecompanion-history-nvim
-
               # rust
               crates-nvim
               rustaceanvim
@@ -231,6 +228,12 @@
               # colorschemes
               miasma-nvim
               vim-afterglow
+
+              # neo-tree
+              fidget-nvim
+              nui-nvim
+              nvim-tree-lua
+              nvim-web-devicons
             ];
             debug = [
               nvim-dap
@@ -239,18 +242,17 @@
               nvim-dap-virtual-text
               nvim-nio
             ];
-            neo-tree = [
-              fidget-nvim
-              nui-nvim
-              nvim-tree-lua
-              nvim-web-devicons
-            ];
             haskell = [
               haskell-tools-nvim
             ];
             latex = [
               cmp-vimtex
               vimtex
+            ];
+            ai = [
+              copilot-lua
+              codecompanion-nvim
+              codecompanion-history-nvim
             ];
           };
 
