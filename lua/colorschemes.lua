@@ -13,26 +13,23 @@ local colorscheme_conf = {
 		vim.cmd("colorscheme mellow")
 	end,
 
-	challenger_deep = function()
-		vim.cmd("colorscheme challenger_deep")
-	end,
-
 	afterglow = function()
 		vim.g.afterglow_italic_comments = 1
 		vim.g.afterglow_inherit_background = 0
 		vim.cmd("colorscheme afterglow")
 	end,
 
-	leaf = function()
-		vim.cmd("colorscheme leaf")
-	end,
-
-	miasma = function()
-		vim.cmd("colorscheme miasma")
-	end,
-
 	default = function() end,
 }
+
+-- Fallback: any colorscheme without special setup just gets `colorscheme <name>`.
+setmetatable(colorscheme_conf, {
+	__index = function(_, name)
+		return function()
+			vim.cmd("colorscheme " .. name)
+		end
+	end,
+})
 
 local filename = "nvim.properties"
 local properties, err = utils.loadProperties(filename)
