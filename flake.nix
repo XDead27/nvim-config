@@ -123,12 +123,14 @@
               zlib
 
               # language servers
+              ansible-language-server
               bash-language-server
               gopls
               lua-language-server
               nixd
               pyright
               ruff
+              terraform-ls
 
               # formatters
               ansible-lint
