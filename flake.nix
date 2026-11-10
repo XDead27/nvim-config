@@ -131,6 +131,7 @@
               ruff
 
               # formatters
+              ansible-lint
               black
               isort
               nixfmt
